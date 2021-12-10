@@ -20,6 +20,8 @@ import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.debounce
 
+private const val DEBOUNCE_INTERVAL = 700L
+
 @FlowPreview
 @ExperimentalCoroutinesApi
 class CocktailsFragment : Fragment() {
@@ -58,7 +60,7 @@ class CocktailsFragment : Fragment() {
 
     private fun setupSearchView() {
         lifecycleScope.launchWhenResumed {
-            searchView?.asFlow()?.debounce(700)?.collect { query ->
+            searchView?.asFlow()?.debounce(DEBOUNCE_INTERVAL)?.collect { query ->
                 if (query.isNullOrBlank()) {
                     showEmptyState()
                 } else {
