@@ -11,4 +11,5 @@
     <color name="primaryLightColor">#ffa4a2</color>
     <color name="primaryDarkColor">#af4448</color>
     <color name="primaryTextColor">#000000</color>
+    <color name="ic_launcher_background">@color/white</color>
 </resources>
