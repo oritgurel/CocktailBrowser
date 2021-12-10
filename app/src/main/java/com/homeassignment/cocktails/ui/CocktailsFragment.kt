@@ -12,6 +12,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import com.homeassignment.cocktails.R
+import com.homeassignment.cocktails.data.model.Drink
 import com.homeassignment.cocktails.databinding.FragmentCocktailsBinding
 import com.homeassignment.cocktails.extentions.asFlow
 import com.homeassignment.cocktails.utils.DataUpdate
@@ -75,12 +76,17 @@ class CocktailsFragment : Fragment() {
             when (it) {
                 is DataUpdate.Error -> showError(it.message)
                 is DataUpdate.Loading -> showLoadingState()
-                is DataUpdate.Success -> {
-                    showResultsList()
-                    if (it.data.isEmpty()) showEmptyState()
-                    else adapter?.submitList(it.data)
-                }
+                is DataUpdate.Success -> onDataUpdateSuccess(it.data)
             }
+        }
+    }
+
+    private fun onDataUpdateSuccess(data: List<Drink>) {
+        if (data.isEmpty()) {
+            showEmptyState()
+        } else {
+            showResultsList()
+            adapter?.submitList(data)
         }
     }
 
