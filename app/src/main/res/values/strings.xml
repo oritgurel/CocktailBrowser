@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">CocktailBrowser</string>
+    <string name="empty_view_text">Choose your cocktail</string>
+</resources>
