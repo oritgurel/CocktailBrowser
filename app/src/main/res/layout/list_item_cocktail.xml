@@ -23,12 +23,17 @@
 
         <TextView
             android:id="@+id/li_cocktail_name"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             tools:text="Galiano"
+            android:ellipsize="marquee"
+            android:singleLine="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
             app:layout_constraintStart_toEndOf="@+id/li_cocktail_image"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView

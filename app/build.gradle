@@ -26,6 +26,7 @@ android {
         }
         buildTypes.each {
             it.buildConfigField 'String', 'BASE_URL', '"https://www.thecocktaildb.com/api/json/v1/1/search.php/"'
+            it.buildConfigField 'String', 'INGREDIENT_PROP_NAME_PREFIX', '"strIngredient"'
         }
     }
     compileOptions {

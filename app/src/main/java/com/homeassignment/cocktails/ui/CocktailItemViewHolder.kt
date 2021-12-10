@@ -15,6 +15,7 @@ class CocktailItemViewHolder(private val binding: ListItemCocktailBinding): Recy
     init {
         binding.root.setOnClickListener {
             ingredients.isSelected = true
+            name.isSelected = true
         }
     }
 
@@ -28,6 +29,7 @@ class CocktailItemViewHolder(private val binding: ListItemCocktailBinding): Recy
 
     fun releaseMarquee() {
         ingredients.isSelected = false
+        name.isSelected = false
     }
 
 }

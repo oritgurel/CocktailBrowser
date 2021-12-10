@@ -1,4 +1,4 @@
-package com.homeassignment.cocktails.ui
+package com.homeassignment.cocktails.viewmodels
 
 import androidx.lifecycle.*
 import com.homeassignment.cocktails.data.model.Drink

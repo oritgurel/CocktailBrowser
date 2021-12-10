@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import com.homeassignment.cocktails.R
+import com.homeassignment.cocktails.viewmodels.CocktailsViewModel
 
 class MainActivity : AppCompatActivity() {
 
