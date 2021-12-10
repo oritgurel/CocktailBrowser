@@ -26,4 +26,8 @@ class CocktailItemViewHolder(private val binding: ListItemCocktailBinding): Recy
         }
     }
 
+    fun releaseMarquee() {
+        ingredients.isSelected = false
+    }
+
 }

@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="wrap_content"
     android:layout_width="match_parent"
-    android:layout_margin="16dp"
+    android:layout_margin="8dp"
     app:shapeAppearanceOverlay="@style/ShapeAppearance.App.SmallComponent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -44,6 +44,7 @@
             tools:text="hjkld, sdfgds, sdfgsdfg, sdfg, sdfg"
             android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
             app:layout_constraintStart_toEndOf="@+id/li_cocktail_image"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/li_cocktail_name"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

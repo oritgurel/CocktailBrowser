@@ -20,6 +20,8 @@ import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.debounce
 
+@FlowPreview
+@ExperimentalCoroutinesApi
 class CocktailsFragment : Fragment() {
 
     private val viewModel: CocktailsViewModel by activityViewModels()
@@ -54,8 +56,6 @@ class CocktailsFragment : Fragment() {
         listView?.adapter = adapter
     }
 
-    @FlowPreview
-    @ExperimentalCoroutinesApi
     private fun setupSearchView() {
         lifecycleScope.launchWhenResumed {
             searchView?.asFlow()?.debounce(700)?.collect { query ->
@@ -101,7 +101,7 @@ class CocktailsFragment : Fragment() {
     }
     private fun showError(message: String?) {
         showEmptyState()
-        emptyView?.text = "Oops, something went wrong.\n$message"
+        emptyView?.text = getString(R.string.error_message, message)
     }
 
     companion object {

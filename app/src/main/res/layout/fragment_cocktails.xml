@@ -8,22 +8,21 @@
     android:background="?attr/colorSurface"
     tools:context=".ui.CocktailsFragment">
 
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/fragment_cocktails_search_view"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        app:queryHint="@string/fragment_cocktails_search_view_hint"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-        app:layout_constraintTop_toTopOf="parent"/>
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/fragment_cocktails_list"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/search_view_height"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/list_item_cocktail"
         app:layout_constraintTop_toBottomOf="@id/fragment_cocktails_search_view" />
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/fragment_cocktails_search_view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/search_view_height"
+        app:queryHint="@string/fragment_cocktails_search_view_hint"
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
         android:id="@+id/fragment_cocktails_empty_view"

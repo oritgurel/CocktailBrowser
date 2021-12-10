@@ -19,6 +19,11 @@ class CocktailsAdapter: ListAdapter<Drink, CocktailItemViewHolder>(CocktailsDiff
         holder.bind(getItem(position))
     }
 
+    override fun onViewRecycled(holder: CocktailItemViewHolder) {
+        super.onViewRecycled(holder)
+        holder.releaseMarquee()
+    }
+
     companion object CocktailsDiffCallback: DiffUtil.ItemCallback<Drink>() {
         override fun areItemsTheSame(oldItem: Drink, newItem: Drink): Boolean {
             return oldItem == newItem
