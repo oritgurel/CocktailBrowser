@@ -58,9 +58,12 @@ class CocktailsFragment : Fragment() {
     @ExperimentalCoroutinesApi
     private fun setupSearchView() {
         lifecycleScope.launchWhenResumed {
-            searchView?.asFlow()?.debounce(700)?.collect {
-                viewModel.loadDrinks(it)
-            }
+            searchView?.asFlow()?.debounce(700)?.collect { query ->
+                if (query.isNullOrBlank()) {
+                    showEmptyState()
+                } else {
+                    viewModel.loadDrinks(query) }
+                }
         }
     }
 

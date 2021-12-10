@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">CocktailBrowser</string>
     <string name="empty_view_text">Choose your cocktail</string>
+    <string name="fragment_cocktails_search_view_hint">Cocktail name</string>
 </resources>

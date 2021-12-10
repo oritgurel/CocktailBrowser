@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.callbackFlow
 @ExperimentalCoroutinesApi
 fun SearchView.asFlow() = callbackFlow {
     val afterQueryChanged: (String?) -> Unit = { query ->
-        query?.let { trySend(query) }
+        trySend(query)
     }
     val queryChangedListener = object : SearchView.OnQueryTextListener {
         override fun onQueryTextSubmit(p0: String?): Boolean {
