@@ -12,6 +12,8 @@ class DrinkMapper {
     fun createDrink(drinkResponse: DrinksItem): Drink {
         val ingredients = mutableListOf<String>()
         try {
+            //a more efficient way would be to create a gson TypeAdapter that will parse the ingredients while serializing (instead of after, like here).
+            //this is for simplicity.
             for (prop in DrinksItem::class.members) {
                 if (prop.name.startsWith(INGREDIENT_PROP_NAME_PREFIX)) {
                     val ing = prop as KProperty1<*, *>
