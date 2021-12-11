@@ -26,7 +26,10 @@ android {
         }
         buildTypes.each {
             it.buildConfigField 'String', 'BASE_URL', '"https://www.thecocktaildb.com/api/json/v1/1/search.php/"'
-            it.buildConfigField 'String', 'INGREDIENT_PROP_NAME_PREFIX', '"strIngredient"'
+            it.buildConfigField 'String', 'D_INGREDIENT_PROP_NAME_PREFIX', '"strIngredient"'
+            it.buildConfigField 'String', 'D_ID_PROP_NAME', '"idDrink"'
+            it.buildConfigField 'String', 'D_NAME_PROP_NAME', '"strDrink"'
+            it.buildConfigField 'String', 'D_IMAGE_PROP_NAME', '"strDrinkThumb"'
         }
     }
     compileOptions {
