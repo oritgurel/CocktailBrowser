@@ -1,20 +1,21 @@
 package com.homeassignment.cocktails.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.widget.SearchView
+import androidx.compose.ui.platform.ComposeView
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.RecyclerView
 import com.homeassignment.cocktails.R
 import com.homeassignment.cocktails.data.model.Drink
 import com.homeassignment.cocktails.databinding.FragmentCocktailsBinding
 import com.homeassignment.cocktails.extentions.asFlow
+import com.homeassignment.cocktails.ui.compose.CocktailsList
 import com.homeassignment.cocktails.utils.DataUpdate
 import com.homeassignment.cocktails.viewmodels.CocktailsViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -32,7 +33,7 @@ class CocktailsFragment : Fragment() {
     private lateinit var binding: FragmentCocktailsBinding
     private var loaderView: ProgressBar? = null
     private var emptyView: TextView? = null
-    private var listView: RecyclerView? = null
+    private var listView: ComposeView? = null//RecyclerView? = null
     private var adapter: CocktailsAdapter? = null
     private var searchView: SearchView? = null
 
@@ -42,21 +43,22 @@ class CocktailsFragment : Fragment() {
     ): View {
         binding = FragmentCocktailsBinding.inflate(inflater, container, false)
         val view = binding.root
-        initViews()
+        initViews(view)
         initViewModel()
         setupSearchView()
         return view
     }
 
-    private fun initViews() {
+    private fun initViews(view: View) {
+        listView = view.findViewById<ComposeView>(R.id.fragment_cocktails_list)
         binding.run {
             loaderView = fragmentCocktailsProgress
-            listView = fragmentCocktailsList
+//            listView = fragmentCocktailsList
             emptyView = fragmentCocktailsEmptyView
             searchView = fragmentCocktailsSearchView
         }
-        adapter = CocktailsAdapter()
-        listView?.adapter = adapter
+//        adapter = CocktailsAdapter()
+//        listView?.adapter = adapter
     }
 
     private fun setupSearchView() {
@@ -65,8 +67,9 @@ class CocktailsFragment : Fragment() {
                 if (query.isNullOrBlank()) {
                     showEmptyState()
                 } else {
-                    viewModel.loadDrinks(query) }
+                    viewModel.loadDrinks(query)
                 }
+            }
         }
     }
 
@@ -85,7 +88,10 @@ class CocktailsFragment : Fragment() {
             showEmptyState()
         } else {
             showResultsList()
-            adapter?.submitList(data)
+//            adapter?.submitList(data)
+            listView?.setContent {
+                CocktailsList(cocktails = data)
+            }
         }
     }
 
@@ -97,16 +103,19 @@ class CocktailsFragment : Fragment() {
             it.text = getString(R.string.empty_view_text)
         }
     }
+
     private fun showLoadingState() {
         listView?.visibility = View.GONE
         loaderView?.visibility = View.VISIBLE
         emptyView?.visibility = View.GONE
     }
+
     private fun showResultsList() {
         listView?.visibility = View.VISIBLE
         loaderView?.visibility = View.GONE
         emptyView?.visibility = View.GONE
     }
+
     private fun showError(message: String?) {
         showEmptyState()
         emptyView?.text = getString(R.string.error_message, message)

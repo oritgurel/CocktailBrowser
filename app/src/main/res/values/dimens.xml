@@ -2,4 +2,5 @@
 <resources>
     <dimen name="li_cocktail_image_size">100dp</dimen>
     <dimen name="search_view_height">55dp</dimen>
+    <dimen name="drink_holder_surface_padding">16dp</dimen>
 </resources>
