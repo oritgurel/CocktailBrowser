@@ -43,7 +43,6 @@ class CocktailsFragment : Fragment() {
         binding = FragmentCocktailsBinding.inflate(inflater, container, false)
         val view = binding.root
         initViews()
-        showEmptyState()
         initViewModel()
         setupSearchView()
         return view
